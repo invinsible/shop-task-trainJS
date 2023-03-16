@@ -42,28 +42,3 @@ const shopList = document.querySelector('.shop__list');
 
 
 
-const createElement = (obj) => {
-  const template = `<li class="shop__item item-element">
-  <div class="item-element__img">
-    <img src="${obj.img}" alt="">
-  </div>
-  <div class="item-element__content">
-    <h3 class="item-element__title">${obj.name}</h3>
-    <p class="item-element__description">${obj.description}</p>
-    <p class="item-element__price">${obj.price} руб</p>
-    <button class="item-element__btn">В корзину</button>
-  </div>
-  </li>`;
-  return template;
-};
-
-const renderElements = (array) => {
-  const resultStrings = [];
-  array.forEach(element => {
-    resultStrings.push(createElement(element));
-  });
-
-  shopList.innerHTML = resultStrings.join();
-};
-
-renderElements(photoArray);
