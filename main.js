@@ -37,3 +37,53 @@ const photoArray = [
 // ****************************************************************************************** 
 // код начинай писать ниже
 
+// const shopList = document.querySelector('.shop__list');
+// const shopItem = `<li class="shop__item item-element">
+// <div class="item-element__img">
+//   <img src=${photoObject.img} alt="">
+// </div>
+// <div class="item-element__content">
+//   <h3 class="item-element__title">${photoObject.name}</h3>
+//   <p class="item-element__description">${photoObject.description}</p>
+//   <p class="item-element__price">${photoObject.price}</p>
+//   <button class="item-element__btn">В корзину</button>
+// </div>
+// </li>`
+// shopList.innerHTML = shopItem;
+
+const shopList = document.querySelector('.shop__list');
+const shopItem = `<li class="shop__item item-element">
+<div class="item-element__img">
+  <img src=${photoArray[0].img} alt="">
+</div>
+<div class="item-element__content">
+  <h3 class="item-element__title">${photoArray[0].name}</h3>
+  <p class="item-element__description">${photoArray[0].description}</p>
+  <p class="item-element__price">${photoArray[0].price}</p>
+  <button class="item-element__btn">В корзину</button>
+</div>
+</li>`+
+`<li class="shop__item item-element">
+<div class="item-element__img">
+  <img src=${photoArray[1].img} alt="">
+</div>
+<div class="item-element__content">
+  <h3 class="item-element__title">${photoArray[1].name}</h3>
+  <p class="item-element__description">${photoArray[1].description}</p>
+  <p class="item-element__price">${photoArray[1].price}</p>
+  <button class="item-element__btn">В корзину</button>
+</div>
+</li>`+
+`<li class="shop__item item-element">
+<div class="item-element__img">
+  <img src=${photoArray[1].img} alt="">
+</div>
+<div class="item-element__content">
+  <h3 class="item-element__title">${photoArray[2].name}</h3>
+  <p class="item-element__description">${photoArray[2].description}</p>
+  <p class="item-element__price">${photoArray[2].price}</p>
+  <button class="item-element__btn">В корзину</button>
+</div>
+</li>`
+
+shopList.innerHTML = shopItem;
