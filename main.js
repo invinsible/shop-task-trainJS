@@ -30,7 +30,28 @@ const photoArray = [
     name: 'Киев',
     description: 'Отлично фотографирует за свои деньги',
     price: 5000,
-    img: 'https://gagadget.com/media/cache/91/49/91497ca6effd304eb8f983a4b1697f9a.jpg'
+    img: 'https://fotoussr.ru/wp-content/uploads/2021/09/IMG_20210916_204021-scaled.jpg'
+  },
+  {
+    id: 0,
+    name: 'Зенит',
+    description: 'Отличная модель для съёмок при любом освещении',
+    price: 7500,
+    img: 'https://fotoussr.ru/wp-content/uploads/2021/01/IMG_20201227_201203-scaled.jpg'
+  },
+  {
+    id: 1,
+    name: 'Смена',
+    description: 'Модель ещё лучше, чем Зенит',
+    price: 9200,
+    img: 'https://upload.wikimedia.org/wikipedia/commons/2/27/%D0%A1%D0%BC%D0%B5%D0%BD%D0%B0_8%D0%9C.jpg'
+  },
+  {
+    id: 2,
+    name: 'Киев',
+    description: 'Отлично фотографирует за свои деньги',
+    price: 5000,
+    img: 'https://fotoussr.ru/wp-content/uploads/2021/09/IMG_20210916_204021-scaled.jpg'
   }
 ];
 
@@ -49,41 +70,32 @@ const photoArray = [
 //   <button class="item-element__btn">В корзину</button>
 // </div>
 // </li>`
-// shopList.innerHTML = shopItem;
+ 
+
 
 const shopList = document.querySelector('.shop__list');
-const shopItem = `<li class="shop__item item-element">
-<div class="item-element__img">
-  <img src=${photoArray[0].img} alt="">
-</div>
-<div class="item-element__content">
-  <h3 class="item-element__title">${photoArray[0].name}</h3>
-  <p class="item-element__description">${photoArray[0].description}</p>
-  <p class="item-element__price">${photoArray[0].price}</p>
-  <button class="item-element__btn">В корзину</button>
-</div>
-</li>`+
-`<li class="shop__item item-element">
-<div class="item-element__img">
-  <img src=${photoArray[1].img} alt="">
-</div>
-<div class="item-element__content">
-  <h3 class="item-element__title">${photoArray[1].name}</h3>
-  <p class="item-element__description">${photoArray[1].description}</p>
-  <p class="item-element__price">${photoArray[1].price}</p>
-  <button class="item-element__btn">В корзину</button>
-</div>
-</li>`+
-`<li class="shop__item item-element">
-<div class="item-element__img">
-  <img src=${photoArray[1].img} alt="">
-</div>
-<div class="item-element__content">
-  <h3 class="item-element__title">${photoArray[2].name}</h3>
-  <p class="item-element__description">${photoArray[2].description}</p>
-  <p class="item-element__price">${photoArray[2].price}</p>
-  <button class="item-element__btn">В корзину</button>
-</div>
-</li>`
 
-shopList.innerHTML = shopItem;
+function createLi(obj) {  
+  const resultLi = `<li class="shop__item item-element">
+  <div class="item-element__img">
+    <img src=${obj.img} alt="">
+  </div>
+  <div class="item-element__content">
+    <h3 class="item-element__title">${obj.name}</h3>
+    <p class="item-element__description">${obj.description}</p>
+    <p class="item-element__price">${obj.price}</p>
+    <button class="item-element__btn">В корзину</button>
+  </div>`  
+
+  return resultLi;
+}
+
+shopList.innerHTML = createLi(photoObject);
+// const arrayItems = [];
+// for (let i = 0; i < photoArray.length; i++) {
+//   const item = createLi(photoArray[i]);
+//   arrayItems.push(item);
+// }
+
+// shopList.innerHTML = arrayItems.join('');
+
