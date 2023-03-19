@@ -57,22 +57,6 @@ const photoArray = [
 
 // ****************************************************************************************** 
 // код начинай писать ниже
-
-// const shopList = document.querySelector('.shop__list');
-// const shopItem = `<li class="shop__item item-element">
-// <div class="item-element__img">
-//   <img src=${photoObject.img} alt="">
-// </div>
-// <div class="item-element__content">
-//   <h3 class="item-element__title">${photoObject.name}</h3>
-//   <p class="item-element__description">${photoObject.description}</p>
-//   <p class="item-element__price">${photoObject.price}</p>
-//   <button class="item-element__btn">В корзину</button>
-// </div>
-// </li>`
- 
-
-
 const shopList = document.querySelector('.shop__list');
 
 function createLi(obj) {  
@@ -90,12 +74,12 @@ function createLi(obj) {
   return resultLi;
 }
 
-shopList.innerHTML = createLi(photoObject);
-// const arrayItems = [];
-// for (let i = 0; i < photoArray.length; i++) {
-//   const item = createLi(photoArray[i]);
-//   arrayItems.push(item);
-// }
+const arrayItems = [];
+for (let i = 0; i < photoArray.length; i++) {
+  const item = createLi(photoArray[i]);
+  arrayItems.push(item);
+}
 
-// shopList.innerHTML = arrayItems.join('');
+
+shopList.innerHTML = arrayItems.join('');
 
