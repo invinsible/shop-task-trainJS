@@ -91,11 +91,12 @@ function createLi(obj) {
 }
 
 shopList.innerHTML = createLi(photoObject);
-// const arrayItems = [];
-// for (let i = 0; i < photoArray.length; i++) {
-//   const item = createLi(photoArray[i]);
-//   arrayItems.push(item);
-// }
 
-// shopList.innerHTML = arrayItems.join('');
+const arrayItems = [];
+for (let i = 0; i < photoArray.length; i++) {
+  const item = createLi(photoArray[i]);
+  arrayItems.push(item);
+}
+
+shopList.innerHTML = arrayItems.join('');
 
