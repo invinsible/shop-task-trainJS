@@ -58,9 +58,11 @@ const photoArray = [
 // ****************************************************************************************** 
 // код начинай писать ниже
 const shopList = document.querySelector('.shop__list');
-
+const basket = document.querySelector('.basket');
+let basketCounter = 0;
+basket.textContent = basketCounter;
 function createLi(obj) {  
-  const resultLi = `<li class="shop__item item-element">
+  const resultLi = `<li class="shop__item item-element shopItem">
   <div class="item-element__img">
     <img src=${obj.img} alt="">
   </div>
@@ -68,18 +70,34 @@ function createLi(obj) {
     <h3 class="item-element__title">${obj.name}</h3>
     <p class="item-element__description">${obj.description}</p>
     <p class="item-element__price">${obj.price}</p>
-    <button class="item-element__btn">В корзину</button>
+    <button class="item-element__btn itemBtn">В корзину</button>
   </div>`  
 
   return resultLi;
 }
 
-const arrayItems = [];
-for (let i = 0; i < photoArray.length; i++) {
-  const item = createLi(photoArray[i]);
-  arrayItems.push(item);
+
+function renderList(array) {
+  const arrayItems = [];
+  for (let i = 0; i < array.length; i++) {
+    const item = createLi(array[i]);
+    arrayItems.push(item);    
+  }
+  return arrayItems.join('');
 }
 
 
-shopList.innerHTML = arrayItems.join('');
+
+shopList.innerHTML = renderList(photoArray);
+
+const allPhoto = document.querySelectorAll('.shopItem');
+for(let i = 0; i < allPhoto.length; i++) {
+  const btn = allPhoto[i].querySelector('.itemBtn')
+  btn.addEventListener('click', function () {    
+    basketCounter = basketCounter + 1;
+    basket.innerText = basketCounter;    
+  })
+}
+
+
 
