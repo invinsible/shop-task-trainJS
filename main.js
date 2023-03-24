@@ -1,67 +1,55 @@
-// level 1 
-// В ul.shop__list вывести один li с заполненными данными из photoObject. Вёрстка для li находится в index.html
-const photoObject = {
-  id: 0,
-  name: 'Зенит',
-  description: 'Отличная модель для съёмок при любом освещении',
-  price: 7500,
-  img: 'https://fotoussr.ru/wp-content/uploads/2021/01/IMG_20201227_201203-scaled.jpg'
-};
-
-// level 2
-// В ul.shop__list вывести данные из массива photoArray. На экране должно появиться 3 фотоаппарата. Вёрстка для li находится в index.html
 const photoArray = [
   {
     id: 0,
-    name: 'Зенит',
+    name: 'Зенит1',
     description: 'Отличная модель для съёмок при любом освещении',
     price: 7500,
     img: 'https://fotoussr.ru/wp-content/uploads/2021/01/IMG_20201227_201203-scaled.jpg'
   },
   {
     id: 1,
-    name: 'Смена',
+    name: 'Смена1',
     description: 'Модель ещё лучше, чем Зенит',
     price: 9200,
     img: 'https://upload.wikimedia.org/wikipedia/commons/2/27/%D0%A1%D0%BC%D0%B5%D0%BD%D0%B0_8%D0%9C.jpg'
   },
   {
     id: 2,
-    name: 'Киев',
+    name: 'Киев1',
     description: 'Отлично фотографирует за свои деньги',
-    price: 5000,
+    price: 6000,
     img: 'https://fotoussr.ru/wp-content/uploads/2021/09/IMG_20210916_204021-scaled.jpg'
   },
   {
     id: 0,
-    name: 'Зенит',
+    name: 'Зенит2',
     description: 'Отличная модель для съёмок при любом освещении',
-    price: 7500,
+    price: 8500,
     img: 'https://fotoussr.ru/wp-content/uploads/2021/01/IMG_20201227_201203-scaled.jpg'
   },
   {
     id: 1,
-    name: 'Смена',
+    name: 'Смена2',
     description: 'Модель ещё лучше, чем Зенит',
-    price: 9200,
+    price: 6200,
     img: 'https://upload.wikimedia.org/wikipedia/commons/2/27/%D0%A1%D0%BC%D0%B5%D0%BD%D0%B0_8%D0%9C.jpg'
   },
   {
     id: 2,
-    name: 'Киев',
+    name: 'Киев2',
     description: 'Отлично фотографирует за свои деньги',
-    price: 5000,
+    price: 5500,
     img: 'https://fotoussr.ru/wp-content/uploads/2021/09/IMG_20210916_204021-scaled.jpg'
   }
 ];
 
-// ****************************************************************************************** 
-// код начинай писать ниже
 const shopList = document.querySelector('.shop__list');
 const basket = document.querySelector('.basket');
+const sortPrice = document.querySelector('.sortPrice');
+const sortName = document.querySelector('.sortName');
 let basketCounter = 0;
 basket.textContent = basketCounter;
-function createLi(obj) {  
+function createLi(obj) { 
   const resultLi = `<li class="shop__item item-element shopItem">
   <div class="item-element__img">
     <img src=${obj.img} alt="">
@@ -74,6 +62,28 @@ function createLi(obj) {
   </div>`  
 
   return resultLi;
+}
+
+sortPrice.addEventListener('click', () => {  
+  sortArray('price');
+});
+
+sortName.addEventListener('click', () => {
+  sortArray('name');
+})
+
+function sortArray(key) {
+  let sortArray = photoArray.sort(function (a, b) {
+    if (a[key] > b[key]) { // a['age']
+      return 1;
+    }
+    if (a[key] < b[key]) {
+      return -1;
+    }
+    // a должно быть равным b
+    return 0;
+  });
+  shopList.innerHTML = renderList(sortArray);
 }
 
 
@@ -90,12 +100,42 @@ function renderList(array) {
 
 shopList.innerHTML = renderList(photoArray);
 
+const cart = {};
+
+// елемент - ключ
+function addToCart(element) {  
+  if(cart[element] === undefined) { //{0:1}
+    cart[element] = 1;
+  } else {
+    cart[element] = cart[element] + 1;
+  }  
+}
+
+
+
 const allPhoto = document.querySelectorAll('.shopItem');
 for(let i = 0; i < allPhoto.length; i++) {
   const btn = allPhoto[i].querySelector('.itemBtn')
-  btn.addEventListener('click', function () {    
+  btn.addEventListener('click', function () {  
+    addToCart(i);
+
     basketCounter = basketCounter + 1;
-    basket.innerText = basketCounter;    
+    basket.innerText = basketCounter;
+   
+    const itemCountBasket = allPhoto[i].querySelector('.itemCountBasket');
+    
+    if (itemCountBasket) {
+      console.log('меняю текст');
+      itemCountBasket.textContent = 'в корзине: ' + cart[i];
+
+    } else {
+      console.log('создаю p');
+      const createP = document.createElement('p');
+      createP.classList.add('itemCountBasket');
+      createP.textContent = 'в корзине: ' + cart[i];
+      btn.after(createP);
+      
+    }
   })
 }
 
