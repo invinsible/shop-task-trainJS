@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Мой магазин</title>
 </head>
@@ -13,26 +14,16 @@
       <span class="basket"></span>
     </p>
   </header>
-  <div class="shop">
-    <h1 class="shop__title">Фотоаппараты</h1>    
-    <button class="sortPrice">по цене</button>
-    <button class="sortName">по алфавиту</button>
-    <ul class="shop__list">
-      <!-- <li class="shop__item item-element">
-        <div class="item-element__img">
-          <img src="____картинка____" alt="">
-        </div>
-        <div class="item-element__content">
-          <h3 class="item-element__title">___название_товара____</h3>
-          <p class="item-element__description">___описание_товара____</p>
-          <p class="item-element__price">___цена___ руб</p>
-          <button class="item-element__btn">В корзину</button>
-        </div>
-      </li> -->
-
-      
-    </ul>
-  </div>  
+  <div class="container">
+    <div class="shop">
+      <h1 class="shop__title">Фотоаппараты</h1>    
+      <button class="sortPrice">по цене</button>
+      <button class="sortName">по алфавиту</button>
+      <ul class="shop__list row"></ul>
+    </div> 
+  </div>
+   
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="main.js"></script>  
 </body>
 </html>

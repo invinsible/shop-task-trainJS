@@ -50,15 +50,15 @@ const sortName = document.querySelector('.sortName');
 let basketCounter = 0;
 basket.textContent = basketCounter;
 function createLi(obj) { 
-  const resultLi = `<li class="shop__item item-element shopItem">
-  <div class="item-element__img">
-    <img src=${obj.img} alt="">
+  const resultLi = `<li class="col-4 shopItem">
+  <div class="">
+    <img src=${obj.img} class="img-fluid" alt="">
   </div>
-  <div class="item-element__content">
-    <h3 class="item-element__title">${obj.name}</h3>
-    <p class="item-element__description">${obj.description}</p>
-    <p class="item-element__price">${obj.price}</p>
-    <button class="item-element__btn itemBtn">В корзину</button>
+  <div class="">
+    <h3 class="">${obj.name}</h3>
+    <p class="">${obj.description}</p>
+    <p class="">${obj.price}</p>
+    <button class="btn btn-dark itemBtn">В корзину</button>
   </div>`  
 
   return resultLi;
@@ -102,7 +102,7 @@ shopList.innerHTML = renderList(photoArray);
 
 const cart = {};
 
-// елемент - ключ
+// элемент - ключ
 function addToCart(element) {  
   if(cart[element] === undefined) { //{0:1}
     cart[element] = 1;
